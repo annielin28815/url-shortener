@@ -1,36 +1,39 @@
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import BackgroundAnimates from './BackgroundAnimates';
+import MainForm from './MainForm';
+import DataTable from './DataTable';
 
-function App() {
-  const [data, setData] = React.useState(null);
-  console.log('data =>', data);
+const App = () => {
+  const [data, setData] = useState([]);
 
-  React.useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
-  }, []);
-
-  React.useEffect(() => {
-    fetch("/test")
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
-  }, []);
+  const viewData = [
+    {
+      id: 1,
+      full: 'https://getbootstrap.com/docs/5.3/utilities/spacing/#notation',
+      short: 'https://tinyurl.com/3eujaca6',
+      clicks: 10
+    },
+    {
+      id: 2,
+      full: 'https://getbootstrap.com/docs/5.3/utilities/spacing/#notation',
+      short: 'https://tinyurl.com/3eujaca6',
+      clicks: 10
+    }
+  ];
 
   return (
     <div className="App">
-      <header className="App-header">
+      <BackgroundAnimates />
+      
+      <main className="container my-5">
         <img src={logo} className="App-logo" alt="logo" />
-
-        <form action="" method="post">
-          <label for="fullUrl">Url</label>
-          <input type="url" name="fullUrl" if="fullUrl"></input>
-          <button type="submit">go</button>
-        </form>
-        <p>{!data ? "Loading..." : data}</p>
-      </header>
+        <h1>URL Shortener</h1>
+        <MainForm />
+        {viewData !== undefined &&  <DataTable data={viewData}/>}
+      </main>
     </div>
   );
 }
