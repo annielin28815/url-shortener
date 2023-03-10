@@ -4,6 +4,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import BackgroundAnimates from './BackgroundAnimates';
 import MainForm from './MainForm';
+import DataTable from './DataTable';
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -26,33 +27,12 @@ const App = () => {
   return (
     <div className="App">
       <BackgroundAnimates />
+      
       <main className="container my-5">
         <img src={logo} className="App-logo" alt="logo" />
         <h1>URL Shortener</h1>
-
         <MainForm />
-
-        {viewData !== undefined &&
-          <table className="table table-responsive table-light table-striped rounded-4">
-            <thead>
-              <tr>
-                <th>Full URL</th>
-                <th>Short URL</th>
-                <th>Clicks</th>
-              </tr>
-            </thead>
-            <tbody>
-              {viewData.map((shortUrl) => {
-                return <tr key={shortUrl.id}>
-                  <td><a href={shortUrl.full}>{shortUrl.full}</a></td>
-                  <td><a href={shortUrl.short}>{shortUrl.short}</a></td>
-                  <td>{shortUrl.clicks}</td>
-                </tr>
-                })
-              }
-            </tbody>
-          </table>
-        }
+        {viewData !== undefined &&  <DataTable data={viewData}/>}
       </main>
     </div>
   );
