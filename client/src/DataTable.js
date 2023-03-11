@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 
 const DataTable = (props) => {
+  // console.log('props =>', props);
 
   return (
     <div className="table table-responsive">
@@ -11,14 +12,22 @@ const DataTable = (props) => {
             <th>Full URL</th>
             <th>Short URL</th>
             <th>Clicks</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody className="table-group-divider">
-          {props.data.map((shortUrl) => {
-            return <tr key={shortUrl.id}>
-              <td><a href={shortUrl.full}>{shortUrl.full}</a></td>
-              <td><a href={shortUrl.short}>{shortUrl.short}</a></td>
-              <td>{shortUrl.clicks}</td>
+          {props.data.map((url) => {
+            console.log('url.clicks =>', url.clicks);
+            return <tr key={url.id}>
+              <td className="lh-lg"><a href={url.full_url}>{url.full_url}</a></td>
+              <td className="lh-lg"><a href={url.short_url}>{url.short_url}</a></td>
+              <td className="lh-lg">{url.clicks === undefined ? 0 : url.clicks}</td>
+              <td>
+                <div className="d-flex justify-content-center align-items-center">
+                  <button className="btn btn-outline-success me-2" type="submit">Edit</button>
+                  <button className="btn btn-outline-danger" type="submit">Delete</button>
+                </div>
+              </td>
             </tr>
             })
           }
