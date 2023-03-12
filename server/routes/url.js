@@ -1,5 +1,5 @@
 import express from "express";
-import { getUrls, createUrl, getUrl, deleteUrl, updateUrl } from "../controllers/usl.js";
+import { getUrls, createUrl, getUrl, deleteUrl, updateUrl } from "../controllers/url.js";
 
 const urlRouter = express.Router();
 
