@@ -1,6 +1,9 @@
 # URL Shortener
 
 This is a shortened URL service website.
+- [ ] CRUD of url.
+- [ ] CRUD of user.
+
 [![React JS](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://zh-hant.reactjs.org/)
 
 [![Node JS](	https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/en/)
@@ -11,7 +14,7 @@ This is a shortened URL service website.
 
 [![Bootstrap CSS](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
 
-## Installation
+## Installation and Prerequisites
 - The development environment is built on version 16.14.2 of node. Please check by use `node -v` in the terminal.
 - The Version control is based on conventional commits. In addition, the application use husky kits to make it easier.
 - The coding style is based on JavaScript Standard.
