@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import "./App.css";
 import Modal from 'react-bootstrap/Modal';
+import axios from 'axios';
 
 const DataTable = (props) => {
   const [updateModalVisible, setUpdateModalVisible] = useState(false);
   const [deleteModalVisible, setDeleteModalVisible] = useState(false);
   const [urlId, setUrlId] = useState(null);
+  const [urlAllData, setUrlAllData] = useState(null);
 
   const handleClose = () => {
     setUrlId(null)
@@ -22,14 +24,20 @@ const DataTable = (props) => {
     }
   }
 
-  const handleRedirect = (e) => {
-    const allData = props.data;
-    let fullUrl = '';
-    allData.map((url) => { 
-      if(url.short_url !== e){
-        fullUrl = url.full_url
-      }
-    })
+  const updateClickCounts = async (url) => {
+    const response = await axios.post(`http://localhost:3001/url/${url.id}`, {...url});
+    if(response.status === 200){
+      // getUrls();
+      console.log('response =>', response);
+    }
+  }
+
+  const getUrl = async (e) => {
+    const response = await axios.get(`http://localhost:3001/url/${e.id}`);
+    if(response.status === 200){
+      setUrlAllData(response.data);
+      updateClickCounts(response.data[0])
+    }
   }
 
   return (
@@ -49,7 +57,7 @@ const DataTable = (props) => {
             return <tr key={url.id}>
               <td className="lh-lg">{index+1}</td>
               <td className="lh-lg"><a href={url.full_url}>{url.full_url}</a></td>
-              <td className="lh-lg"><a href='#' onClick={() => handleRedirect(url.short_url)}>{url.short_url}</a></td>
+              <td className="lh-lg"><a href='#' onClick={() => getUrl(url)}>{url.short_url}</a></td>
               <td className="lh-lg">{url.clicks === undefined ? 0 : url.clicks}</td>
               <td>
                 <div className="d-flex justify-content-center align-items-center">

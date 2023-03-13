@@ -22,7 +22,7 @@ export const createUrl = (req, res, next) => {
 export const getUrl = (req, res) => {
   const singleUrl = urls.filter((url) => url.id === req.params.id);
 
-  // console.log('singleUrl =>', singleUrl);
+  console.log('singleUrl =>', singleUrl);
   res.send(singleUrl);
 };
 
@@ -39,9 +39,13 @@ export const updateUrl = (req, res) => {
   res.send('Updated url successfully.')
 };
 
-export const updateClickCount = (req, res) => {
-  // const singleUrl = urls.filter((url) => url.id === req.params.id);
-  // if (shortUrl == null) return res.sendStatus(404)
+export const updateClickCounts = (req, res) => {
+  console.log('req =>', req);
+  // const singleUrl = urls.filter((url) => url.full_url === req);
+  // console.log('singleUrl =>', singleUrl);
+  // if (singleUrl == null) {
+  //   return res.sendStatus(404)
+  // }
 
   // shortUrl.clicks++
   // shortUrl.save()

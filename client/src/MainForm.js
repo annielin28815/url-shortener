@@ -15,6 +15,7 @@ const MainForm = () => {
     const response = await axios.get('http://localhost:3001/urls');
     if(response.status === 200){
       setData(response.data);
+      setFullUrl('')
     }
   };
 
@@ -47,7 +48,7 @@ const MainForm = () => {
               name="fullUrl" 
               id="fullUrl" 
               onChange={handleInputChange}
-              // value={fullUrl}
+              value={fullUrl || ''}
               className="form-control col mr-2" 
             />
           </div>

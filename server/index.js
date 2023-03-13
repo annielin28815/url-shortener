@@ -15,15 +15,15 @@ app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });
 
-// import mongoose from 'mongoose';
+import mongoose from 'mongoose';
 // import ShortUrl from './models/shortUrl.js';
 
 // app.set('view engine', 'ejs')
 // app.use(express.urlencoded({ extended: false }))
 
-// mongoose.connect('mongodb://localhost/urlShortener', {
-//   useNewUrlParser: true, useUnifiedTopology: true
-// });
+mongoose.connect('mongodb://localhost/urlShortener', {
+  useNewUrlParser: true, useUnifiedTopology: true
+});
 
 // app.get('/', async (req, res) => {
 //   const shortUrls = await ShortUrl.find()
